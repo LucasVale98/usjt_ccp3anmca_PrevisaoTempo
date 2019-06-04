@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>Tempo</title>
+		<link th:href = "@{/webjars/bootstrap/css/bootstrap.min.css}"
+			rel="stylesheet" />
+		<link th:href="@{/webjars/bootstrap/css/bootstraptheme.min.css}"
+			rel="stylesheet" />
+	</head>
+	<body>
+		<div class="panel panel-default" style="margin: 10px">
+			<div class="panel-heading">
+				<h1 class="panel-title">Tempo</h1>
+			</div>
+			<div class="panel-body">
+				<form class="form-inline" method="post" th:object="${tempo}"
+					th:action="@{/tempo}" style="margin: 20px 0">
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Dia" 
+							th:field="*{Dia}" />
+						<input type="text" class="form-control" placeholder="Temperatura Mínima" 
+							th:field="*{temp_Min}" />
+						<input type="text" class="form-control" placeholder="Temperatura Maxíma" 
+							th:field="*{temp_Max}" />
+						<input type="text" class="form-control" placeholder="Umidade" 
+							th:field="*{umidade}" />
+						<input type="text" class="form-control" placeholder="Descrição" 
+							th:field="*{descricao}" />
+						<input type="text" class="form-control" placeholder="Data e Hora" 
+							th:field="*{data_Hora}" />
+						<input type="text" class="form-control" placeholder="Latitude" 
+							th:field="*{latitude}" />
+						<input type="text" class="form-control" placeholder="Longitude" 
+							th:field="*{longitude}" />						
+						<button type="submit" class="btn btnprimary">Adicionar</button>
+					</div>
+				</form>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Dia</th>
+							<th>Temp. Mínima</th>
+							<th>Temp. Máxima</th>
+							<th>Data</th>
+							<th>Umidade</th>
+							<th>Descrição</th>
+							<th>Data e Hora</th>
+							<th>Latitude</th>
+							<th>Longitude</th>
+							
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="tempo : ${tempo}">
+							<td th:text="$ {tempo.dia}"></td>
+							<td th:text="$ {tempo.temp_min}"></td>
+							<td th:text="$ {tempo.temp.max}"></td>
+							<td th:text="$ {tempo.umidade}"></td>
+							<td th:text="$ {tempo.descricao}"></td>
+							<td th:text="$ {tempo.data_Hora}"></td>
+							<td th:text="$ {tempo.latitude}"></td>
+							<td th:text="$ {tempo.longitude}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>
